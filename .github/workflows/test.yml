@@ -13,12 +13,7 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v2
 
-      - name: Configurar Java
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11 # Cambia la versión de Java según tus necesidades
-          distribution: 'adopt' # Especifica la distribución de Java que deseas usar
-
+      
       - name: Ejecutar pruebas
         run: |
           ./gradlew test  # O utiliza el comando de prueba adecuado para tu proyecto
