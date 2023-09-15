@@ -23,7 +23,7 @@ jobs:
         run: |
           # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
           javac -cp:../../Console_Gym/src/**/*.java
-          working-directory: ../../Console_Gym/tests/  # Ajusta la ruta adecuada si es necesario
+        working-directory: ../../Console_Gym/tests/  # Ajusta la ruta adecuada si es necesario
 
         
 
