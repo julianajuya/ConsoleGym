@@ -1,23 +1,35 @@
-name: Compilar y ejecutar pruebas
+name: Java CI with JUnit 5
 
-on: [push] # Define cuándo se ejecuta esta acción, por ejemplo, cuando se hace un push al repositorio
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout del repositorio
-      uses: actions/checkout@v2
+      - name: Checkout código
+        uses: actions/checkout@v2
 
-    - name: Compilar y ejecutar pruebas
-      run: |
-        # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
-        javac -cp .:Console_Gym/src/**/*.java ../../Console_Gym/tests/TestModel.java
-      working-directory: .github/workflows/ # Esto establece el directorio de trabajo en la ubicación del archivo YAML
+      - name: Configurar Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: "adopt"
 
-    - name: Ejecutar pruebas
-      run: |
-        # Ejecutar tus pruebas aquí
-        # Por ejemplo: java -cp .:Console_Gym/src:Console_Gym/tests nombre_de_tu_clase_de_prueba
-      working-directory: .github/workflows/ # Esto establece el directorio de trabajo en la ubicación del archivo YAML
+      
+
+      - name: Compilar y ejecutar pruebas
+        run: |
+          # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
+          javac -cp .:../../Console_Gym/src/**/*.java ../../Console_Gym/tests/*.java 
+        working-directory: ../../tests/
+
+ 
+      - name: Publicar informes de prueba
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: build/test-results
