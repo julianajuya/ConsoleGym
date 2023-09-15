@@ -26,7 +26,7 @@ jobs:
           
           # Ejecutar pruebas JUnit 5
           ./gradlew test
-        working-directory: Console_Gym\tests  # Reemplaza con la ruta correcta a tu proyecto
+        working-directory: Console_Gym/tests  # Reemplaza con la ruta correcta a tu proyecto
 
       - name: Publicar informes de prueba
         uses: actions/upload-artifact@v2
