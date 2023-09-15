@@ -23,7 +23,7 @@ jobs:
         run: |
           pwd
           ls
-        working-directory: ../../tests/
+        working-directory: ../../Console_Gym/tests/*.java 
 
       - name: Compilar y ejecutar pruebas
         run: |
@@ -37,7 +37,6 @@ jobs:
           ls
         working-directory: ../../tests/
 
-        
       - name: Ejecutar pruebas JUnit 5
         run: |
           # Ejecutar las pruebas JUnit 5 desde el directorio raíz del proyecto
