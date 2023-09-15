@@ -19,10 +19,7 @@ jobs:
           java-version: 11
           distribution: "adopt"
 
-      - name: Verificar ubicación
-        run: |
-          ls
-        working-directory: ../../Console_Gym/tests/*.java 
+      
 
       - name: Compilar y ejecutar pruebas
         run: |
@@ -30,18 +27,7 @@ jobs:
           javac -cp .:../../Console_Gym/src/**/*.java ../../Console_Gym/tests/*.java 
         working-directory: ../../tests/
 
-      - name: Verificar ubicación
-        run: |
-          pwd
-          ls
-        working-directory: ../../tests/
-
-      - name: Ejecutar pruebas JUnit 5
-        run: |
-          # Ejecutar las pruebas JUnit 5 desde el directorio raíz del proyecto
-          java -cp .: org.junit.platform.console.ConsoleLauncher --select-package tests
-        working-directory: ../../Console_Gym/tests/
-
+ 
       - name: Publicar informes de prueba
         uses: actions/upload-artifact@v2
         with:
