@@ -1,0 +1,36 @@
+name: Java CI with Gradle
+
+on:
+  push:
+    branches:
+      - master # Cambia esto según la rama de tu proyecto
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout código
+        uses: actions/checkout@v2
+
+      - name: Configurar Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11 # Cambia la versión de Java según tus necesidades
+          distribution: '11' # Especifica la distribución de Java que deseas usar
+
+      - name: Ejecutar pruebas
+        run: |
+          ./gradlew test  # O utiliza el comando de prueba adecuado para tu proyecto
+
+      - name: Recopilar informes de prueba
+        run: |
+          # Aquí puedes recopilar informes de prueba, como archivos XML de JUnit
+
+      - name: Publicar informes de prueba
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: build/test-results # Cambia la ruta según donde se encuentren tus informes de prueba
+
+# Puedes agregar más pasos según tus necesidades, como despliegues o notificaciones.
