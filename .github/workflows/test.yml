@@ -22,7 +22,7 @@ jobs:
       - name: Compilar y ejecutar pruebas
         run: |
           # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
-          javac -cp .:../../Console_Gym/src/*.java ../../Console_Gym/tests/TestModel.java
+          javac -cp .:../../Console_Gym/src/*.java ../../tests/TestModel.java
           working-directory: ../../Console_Gym/tests/
         
 
