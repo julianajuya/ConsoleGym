@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 11 # Cambia la versión de Java según tus necesidades
-          distribution: '11' # Especifica la distribución de Java que deseas usar
+          distribution: 'adopt' # Especifica la distribución de Java que deseas usar
 
       - name: Ejecutar pruebas
         run: |
