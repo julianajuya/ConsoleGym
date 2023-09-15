@@ -1,7 +1,7 @@
-package utilities;
+package src.utilities;
 
-import models.Gender;
-import models.TypeDocument;
+import src.models.Gender;
+import src.models.TypeDocument;
 
 public class Utilities {
 

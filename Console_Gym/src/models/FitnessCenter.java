@@ -1,7 +1,7 @@
-package models;
+package src.models;
 
-import exceptions.DocumentNotFoundException;
-import exceptions.EmptyListException;
+import src.exceptions.DocumentNotFoundException;
+import src.exceptions.EmptyListException;
 
 public class FitnessCenter {
 	

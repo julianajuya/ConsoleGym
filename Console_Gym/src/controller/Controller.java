@@ -1,12 +1,12 @@
-package controller;
+package src.controller;
 
-import exceptions.DocumentNotFoundException;
-import exceptions.EmptyListException;
-import models.Client;
-import models.FitnessCenter;
-import models.Gender;
-import models.TypeDocument;
-import views.IOManager;
+import src.exceptions.DocumentNotFoundException;
+import src.exceptions.EmptyListException;
+import src.models.Client;
+import src.models.FitnessCenter;
+import src.models.Gender;
+import src.models.TypeDocument;
+import src.views.IOManager;
 
 public class Controller {
 	IOManager view;

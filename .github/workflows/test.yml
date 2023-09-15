@@ -3,7 +3,7 @@ name: Java CI
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -23,4 +23,4 @@ jobs:
       run: javac -cp .:path/to/junit.jar src/*.java  # Ajusta la ruta según la ubicación de tus archivos fuente
 
     - name: Ejecutar pruebas
-      run: java -cp .:path/to/junit.jar:path/to/hamcrest-core.jar org.junit.runner.JUnitCore YourTestClass  # Reemplaza YourTestClass con el nombre de tu clase de prueba   
+      run: java -cp .:path/to/junit.jar:path/to/hamcrest-core.jar org.junit.runner.JUnitCore TestModel  # Reemplaza YourTestClass con el nombre de tu clase de prueba   

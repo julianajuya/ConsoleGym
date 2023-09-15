@@ -1,4 +1,4 @@
-package models;
+package src.models;
 
 public enum TypeDocument {
 	ID("Cédula de Ciudadanía"), IC("Tajeta de Identidad"), FOREING_ID("Cédula de Extranjería");

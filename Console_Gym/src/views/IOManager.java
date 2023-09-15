@@ -1,10 +1,10 @@
-package views;
+package src.views;
 
 import java.util.Scanner;
 
-import models.Gender;
-import models.TypeDocument;
-import utilities.Utilities;
+import src.models.Gender;
+import src.models.TypeDocument;
+import src.utilities.Utilities;
 
 public class IOManager {
 	private Scanner console;

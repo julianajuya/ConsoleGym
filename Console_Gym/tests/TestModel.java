@@ -6,12 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import exceptions.DocumentNotFoundException;
-import models.ClasificationBodyMass;
-import models.Client;
-import models.FitnessCenter;
-import models.Gender;
-import models.TypeDocument;
+import src.exceptions.DocumentNotFoundException;
+import src.models.ClasificationBodyMass;
+import src.models.Client;
+import src.models.FitnessCenter;
+import src.models.Gender;
+import src.models.TypeDocument;
 
 class TestModel {
 

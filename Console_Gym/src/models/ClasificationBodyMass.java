@@ -1,4 +1,4 @@
-package models;
+package src.models;
 
 public enum ClasificationBodyMass {
 	LOW("Peso Bajo"), NORMAL("Peso Ideal"), OVERWEIGHT("Sobrepeso"), OBESITY("Obesidad");
