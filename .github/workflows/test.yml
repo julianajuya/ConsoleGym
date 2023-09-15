@@ -1,4 +1,4 @@
-name: Java CI
+name: Java CI with JUnit 5
 
 on:
   push:
@@ -10,17 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout código
-      uses: actions/checkout@v2
+      - name: Checkout código
+        uses: actions/checkout@v2
 
-    - name: Configurar Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: 11
-        distribution: 'adopt'
+      - name: Configurar Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: "adopt"
 
-    - name: Compilar el proyecto
-      run: javac -cp .:path/to/junit.jar src/*.java  # Ajusta la ruta según la ubicación de tus archivos fuente
+      - name: Descargar JUnit Platform Console Launcher
+        run: |
+          wget https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/5.x.y/junit-platform-console-standalone-5.x.y.jar -O junit-platform-console-standalone.jar
+        env:
+          JUNIT_VERSION: 5.x.y # Reemplaza con la versión de JUnit 5 que deseas utilizar
 
-    - name: Ejecutar pruebas
-      run: java -cp .:path/to/junit.jar:path/to/hamcrest-core.jar org.junit.runner.JUnitCore TestModel  # Reemplaza YourTestClass con el nombre de tu clase de prueba   
+      - name: Compilar y ejecutar pruebas
+        run: |
+          # Compilar el código fuente y las pruebas
+          javac -cp .:/ruta/a/tus/librerias/*.jar src/*.java tests/*.java
+
+          # Ejecutar las pruebas JUnit 5
+          java -cp .:/ruta/a/tus/librerias/*.jar:./junit-platform-console-standalone.jar org.junit.platform.console.ConsoleLauncher --select-package tests
+
+      - name: Publicar informes de prueba
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: build/test-results
