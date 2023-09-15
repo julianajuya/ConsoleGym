@@ -23,7 +23,7 @@ jobs:
         run: |
           # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
           javac -cp .:src/*.java src/tests/*.java
-          working-directory: github/workflows
+          working-directory: ../../Console_Gym/tests
 
       - name: Ejecutar pruebas JUnit 5
         run: |
