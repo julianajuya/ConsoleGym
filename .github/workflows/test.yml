@@ -19,23 +19,17 @@ jobs:
           java-version: 11
           distribution: "adopt"
 
-      - name: Descargar JUnit Platform Console Launcher
+      - name: Compilar el código y las pruebas
         run: |
-          # Especifica la versión de JUnit 5 que deseas descargar
-          JUNIT_VERSION=5.9.3
+          # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
+          javac -cp .:src/*.java tests/*.java
+        working-directory: Console_Gym/tests # Ajusta la ruta adecuada si es necesario
 
-          # Descarga JUnit Platform Console Standalone JAR
-          wget https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/$JUNIT_VERSION/junit-platform-console-standalone-$JUNIT_VERSION.jar -O junit-platform-console-standalone.jar
-        env:
-          JUNIT_VERSION: 5.9.3 # Reemplaza con la versión de JUnit 5 que deseas utilizar
-
-      - name: Compilar y ejecutar pruebas
+      - name: Ejecutar pruebas JUnit 5
         run: |
-          # Compilar el código fuente y las pruebas
-          javac -cp .:/ruta/a/tus/librerias/*.jar src/*.java tests/*.java
-
-          # Ejecutar las pruebas JUnit 5
-          java -cp .:/ruta/a/tus/librerias/*.jar:./junit-platform-console-standalone.jar org.junit.platform.console.ConsoleLauncher --select-package tests
+          # Ejecutar las pruebas JUnit 5 desde el directorio raíz del proyecto
+          java -cp .: org.junit.platform.console.ConsoleLauncher --select-package tests
+        working-directory: Console_Gym/tests  # Ajusta la ruta adecuada si es necesario
 
       - name: Publicar informes de prueba
         uses: actions/upload-artifact@v2
