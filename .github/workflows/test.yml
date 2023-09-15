@@ -21,15 +21,15 @@ jobs:
 
       - name: Compilar y ejecutar pruebas
         run: |
-            # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
-            javac -cp .:../../Console_Gym/src/**/*.java
+          # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
+          javac -cp .:../../Console_Gym/src/**/*.java ../../Console_Gym/tests/*.java 
+        working-directory: ../../Console_Gym/tests/
         
-        
-
       - name: Ejecutar pruebas JUnit 5
         run: |
           # Ejecutar las pruebas JUnit 5 desde el directorio raíz del proyecto
           java -cp .: org.junit.platform.console.ConsoleLauncher --select-package tests
+        working-directory: ../../Console_Gym/tests/
 
       - name: Publicar informes de prueba
         uses: actions/upload-artifact@v2
