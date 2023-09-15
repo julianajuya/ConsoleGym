@@ -1,31 +1,26 @@
-name: Java CI with Gradle
+name: Java CI
 
 on:
   push:
     branches:
-      - master # Cambia esto según la rama de tu proyecto
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps: 
-      - name: Checkout código
-        uses: actions/checkout@v2
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
 
-      
-      - name: Ejecutar pruebas
-        run: |
-          ./gradlew test  # O utiliza el comando de prueba adecuado para tu proyecto
+    - name: Configurar Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: 11
+        distribution: 'adopt'
 
-      - name: Recopilar informes de prueba
-        run: |
-          # Aquí puedes recopilar informes de prueba, como archivos XML de JUnit
+    - name: Compilar el proyecto
+      run: javac -cp .:path/to/junit.jar src/*.java  # Ajusta la ruta según la ubicación de tus archivos fuente
 
-      - name: Publicar informes de prueba
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-reports
-          path: build/test-results # Cambia la ruta según donde se encuentren tus informes de prueba
-
-# Puedes agregar más pasos según tus necesidades, como despliegues o notificaciones.
+    - name: Ejecutar pruebas
+      run: java -cp .:path/to/junit.jar:path/to/hamcrest-core.jar org.junit.runner.JUnitCore YourTestClass  # Reemplaza YourTestClass con el nombre de tu clase de prueba   
