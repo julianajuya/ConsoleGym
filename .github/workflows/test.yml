@@ -22,7 +22,7 @@ jobs:
       - name: Compilar el código y las pruebas
         run: |
           # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
-          javac -cp .:src/*.java tests/*.java
+          javac -cp .:../../src/*.java ../../tests/*.java
         working-directory: ../../Console_Gym/tests # Ajusta la ruta adecuada si es necesario
 
       - name: Ejecutar pruebas JUnit 5
