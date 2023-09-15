@@ -21,7 +21,6 @@ jobs:
 
       - name: Verificar ubicación
         run: |
-          dir
           ls
         working-directory: ../../Console_Gym/tests/*.java 
 
