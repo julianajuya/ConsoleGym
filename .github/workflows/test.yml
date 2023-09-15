@@ -19,22 +19,17 @@ jobs:
           java-version: 11
           distribution: "adopt"
 
-      - name: Descargar JUnit Platform Console Launcher
+      - name: Ejecutar pruebas con Gradle
         run: |
-          wget https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/5.x.y/junit-platform-console-standalone-5.x.y.jar -O junit-platform-console-standalone.jar
-        env:
-          JUNIT_VERSION: 5.x.y # Reemplaza con la versión de JUnit 5 que deseas utilizar
-
-      - name: Compilar y ejecutar pruebas
-        run: |
-          # Compilar el código fuente y las pruebas
-          javac -cp .:/ruta/a/tus/librerias/*.jar src/*.java tests/*.java
-
-          # Ejecutar las pruebas JUnit 5
-          java -cp .:/ruta/a/tus/librerias/*.jar:./junit-platform-console-standalone.jar org.junit.platform.console.ConsoleLauncher --select-package tests
+          # Configurar Gradle Wrapper (si no está configurado)
+          chmod +x gradlew
+          
+          # Ejecutar pruebas JUnit 5
+          ./gradlew test
+        working-directory: Console_Gym\tests  # Reemplaza con la ruta correcta a tu proyecto
 
       - name: Publicar informes de prueba
         uses: actions/upload-artifact@v2
         with:
           name: test-reports
-          path: build/test-results
+          path: path/to/your/project/build/test-results
