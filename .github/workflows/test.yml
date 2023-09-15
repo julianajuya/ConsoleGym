@@ -21,7 +21,11 @@ jobs:
 
       - name: Descargar JUnit Platform Console Launcher
         run: |
-          wget https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/5.9.3/junit-platform-console-standalone-5.9.3.jar -O junit-platform-console-standalone.jar
+          # Especifica la versión de JUnit 5 que deseas descargar
+          JUNIT_VERSION=5.9.3
+
+          # Descarga JUnit Platform Console Standalone JAR
+          wget https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/$JUNIT_VERSION/junit-platform-console-standalone-$JUNIT_VERSION.jar -O junit-platform-console-standalone.jar
         env:
           JUNIT_VERSION: 5.9.3 # Reemplaza con la versión de JUnit 5 que deseas utilizar
 
