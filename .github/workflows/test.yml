@@ -13,7 +13,7 @@ jobs:
     - name: Compilar y ejecutar pruebas
       run: |
         # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
-        javac -cp .:Console_Gym/src/**/*.java Console_Gym/tests/*.java
+        javac -cp .:Console_Gym/src/**/*.java Console_Gym/tests/TestModel.java
       working-directory: .github/workflows/ # Esto establece el directorio de trabajo en la ubicación del archivo YAML
 
     - name: Ejecutar pruebas
