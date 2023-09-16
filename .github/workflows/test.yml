@@ -28,7 +28,7 @@ jobs:
         working-directory: ./Console_Gym 
         run: |
           # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
-          javac -cp .:../../Console_Gym/src/**/*.java ../../Console_Gym/tests/*.java 
+          javac -cp .:./junit-platform-console-standalone.jar ./src/**/*.java ./tests/*.java
           java -jar junit-platform-console-standalone.jar --classpath .:./junit-platform-console-standalone.jar --scan-classpath  
  
       - name: Publicar informes de prueba
