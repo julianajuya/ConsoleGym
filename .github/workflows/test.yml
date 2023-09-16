@@ -19,17 +19,22 @@ jobs:
           java-version: 11
           distribution: "adopt"
 
-      
+      - name: Download JUnit
+        working-directory: ./Console_Gym
+        run: 
+          wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.2/junit-platform-console-standalone-1.8.2.jar -O junit-platform-console-standalone.jar 
 
       - name: Compilar y ejecutar pruebas
+        working-directory: ./Console_Gym 
         run: |
           # Compilar el código fuente y las pruebas desde el directorio raíz del proyecto
           javac -cp .:../../Console_Gym/src/**/*.java ../../Console_Gym/tests/*.java 
-        working-directory: ../../tests/
-
+          java -jar junit-platform-console-standalone.jar --classpath .:./junit-platform-console-standalone.jar --scan-classpath  
  
       - name: Publicar informes de prueba
         uses: actions/upload-artifact@v2
         with:
           name: test-reports
           path: build/test-results
+
+          
